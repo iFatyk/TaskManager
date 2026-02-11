@@ -1,0 +1,69 @@
+package task;
+
+import exception.EmptyTitleException;
+import exception.FileReadException;
+import exception.UnknownStatusException;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+
+class TaskFileRepository{
+    TaskFileRepository(){}
+
+    void SaveTasks(ArrayList<Task> tasks, String path) throws IOException {
+        try(FileWriter writer = new FileWriter(path, false)) {
+            for (Task task : tasks) {
+                writer.write(task.toString());
+            }
+            writer.flush();
+        }
+    }
+
+    ArrayList<Task> ReadTasks(String path) throws IOException, FileReadException, EmptyTitleException {
+        String line = "";
+        int c;
+
+        ArrayList<Task> tasks = new ArrayList<Task>();
+
+        try(FileReader reader = new FileReader(path)){
+            while((c = reader.read()) != -1){
+                line += (char)c;
+            }
+        }
+
+        String[] stringTasks = line.split("\n");
+
+        for(int i = 0; i < stringTasks.length; i++){
+            String stringTask = stringTasks[i];
+            String[] taskParameters = stringTask.split("|");
+
+            int id = Integer.parseInt(taskParameters[0]);
+            String title = taskParameters[1];
+            String description = taskParameters[2];
+
+            Status status;
+            try {
+                status = Status.parseStatus(taskParameters[3]);
+            }
+            catch (UnknownStatusException exc){
+                throw new FileReadException(path, i + 1, exc.getMessage());
+            }
+
+            Date createdAt;
+            try{
+                createdAt = Task.dateFormat.parse(taskParameters[4]);
+            }
+            catch (ParseException parseExc){
+                throw new FileReadException(path, i + 1, taskParameters[4]);
+            }
+
+            tasks.add(new Task(id, title, description, status, createdAt));
+        }
+
+        return tasks;
+    }
+}
