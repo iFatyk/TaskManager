@@ -11,10 +11,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
-class TaskFileRepository{
-    TaskFileRepository(){}
+public class TaskFileRepository{
+    public TaskFileRepository(){}
 
-    void SaveTasks(ArrayList<Task> tasks, String path) throws IOException {
+    public void SaveTasks(ArrayList<Task> tasks, String path) throws IOException {
         try(FileWriter writer = new FileWriter(path, false)) {
             for (Task task : tasks) {
                 writer.write(task.toString());
@@ -23,23 +23,23 @@ class TaskFileRepository{
         }
     }
 
-    ArrayList<Task> ReadTasks(String path) throws IOException, FileReadException, EmptyTitleException {
-        String line = "";
+    public ArrayList<Task> ReadTasks(String path) throws IOException, FileReadException, EmptyTitleException {
+        StringBuilder line = new StringBuilder();
         int c;
 
-        ArrayList<Task> tasks = new ArrayList<Task>();
+        ArrayList<Task> tasks = new ArrayList<>();
 
         try(FileReader reader = new FileReader(path)){
             while((c = reader.read()) != -1){
-                line += (char)c;
+                line.append((char) c);
             }
         }
 
-        String[] stringTasks = line.split("\n");
+        String[] stringTasks = line.toString().split("\n");
 
         for(int i = 0; i < stringTasks.length; i++){
             String stringTask = stringTasks[i];
-            String[] taskParameters = stringTask.split("|");
+            String[] taskParameters = stringTask.split("\\|");
 
             int id = Integer.parseInt(taskParameters[0]);
             String title = taskParameters[1];

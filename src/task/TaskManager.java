@@ -2,48 +2,51 @@ package task;
 
 import java.util.ArrayList;
 
-import exception.EmptyTitleException;
 import exception.UnknownIdException;
 import exception.UnknownTitleException;
 
-class TaskManager{
+public class TaskManager{
     private ArrayList<Task> tasks;
     private int taskCounter;
 
-    TaskManager(){
+    public TaskManager(){
         taskCounter = 0;
         tasks = new ArrayList<>();
     }
 
-    ArrayList<Task> GetTasks(){
+    public ArrayList<Task> getTasks(){
         return (ArrayList<Task>) tasks.clone();
     }
 
-    void addTask(String title, String description, Status status) throws EmptyTitleException {
+    public void addTask(String title, String description, Status status) {
         tasks.add(new Task(++taskCounter, title, description, status));
     }
 
-    void changeStatus(int id, Status status) throws UnknownIdException{
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public void changeStatus(int id, Status status) throws UnknownIdException{
         get(id).setStatus(status);
     }
 
-    void changeStatus(String title, Status status) throws UnknownTitleException{
+    public void changeStatus(String title, Status status) throws UnknownTitleException{
         get(title).setStatus(status);
     }
 
-    Task get(int id) throws UnknownIdException{
+    public Task get(int id) throws UnknownIdException{
         return tasks.get(searchById(id));
     }
 
-    Task get(String title) throws UnknownTitleException{
+    public Task get(String title) throws UnknownTitleException{
         return tasks.get(searchByTitle(title));
     }
 
-    void remove(int id) throws UnknownIdException{
+    public void remove(int id) throws UnknownIdException{
         tasks.remove(searchById(id));
     }
 
-    void remove(String title) throws UnknownTitleException{
+    public void remove(String title) throws UnknownTitleException{
         tasks.remove(searchByTitle(title));
     }
 
