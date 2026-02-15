@@ -1,4 +1,4 @@
-import menu.State;
+import main.java.com.fatyk.taskmanager.menu.State;
 
 
 void main() {

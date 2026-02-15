@@ -1,4 +1,4 @@
-package task;
+package main.java.com.fatyk.taskmanager.task;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;

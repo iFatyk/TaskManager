@@ -1,8 +1,8 @@
-package task;
+package main.java.com.fatyk.taskmanager.task;
 
-import exception.EmptyTitleException;
-import exception.FileReadException;
-import exception.UnknownStatusException;
+import main.java.com.fatyk.taskmanager.exception.EmptyTitleException;
+import main.java.com.fatyk.taskmanager.exception.FileReadException;
+import main.java.com.fatyk.taskmanager.exception.UnknownStatusException;
 
 import java.io.FileReader;
 import java.io.FileWriter;

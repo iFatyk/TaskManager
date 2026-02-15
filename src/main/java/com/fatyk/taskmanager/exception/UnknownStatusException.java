@@ -1,4 +1,4 @@
-package exception;
+package main.java.com.fatyk.taskmanager.exception;
 
 public class UnknownStatusException extends Exception{
     public String stringInterpretation;

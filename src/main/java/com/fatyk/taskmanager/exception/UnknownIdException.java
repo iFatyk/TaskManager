@@ -1,4 +1,4 @@
-package exception;
+package main.java.com.fatyk.taskmanager.exception;
 
 public class UnknownIdException extends Exception{
     public UnknownIdException(int id){

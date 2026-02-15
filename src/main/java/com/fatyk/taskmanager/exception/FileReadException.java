@@ -1,4 +1,4 @@
-package exception;
+package main.java.com.fatyk.taskmanager.exception;
 
 public class FileReadException extends Exception{
     public FileReadException(String path, int row, String badWord)

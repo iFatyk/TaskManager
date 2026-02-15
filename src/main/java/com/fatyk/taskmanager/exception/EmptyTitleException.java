@@ -1,4 +1,4 @@
-package exception;
+package main.java.com.fatyk.taskmanager.exception;
 
 public class EmptyTitleException extends Exception {
     public EmptyTitleException(){

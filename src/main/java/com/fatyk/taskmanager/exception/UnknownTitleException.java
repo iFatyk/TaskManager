@@ -1,4 +1,4 @@
-package exception;
+package main.java.com.fatyk.taskmanager.exception;
 
 public class UnknownTitleException extends Exception{
     public UnknownTitleException(String title){

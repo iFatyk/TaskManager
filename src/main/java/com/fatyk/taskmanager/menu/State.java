@@ -1,13 +1,13 @@
-package menu;
+package main.java.com.fatyk.taskmanager.menu;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import exception.*;
-import task.Status;
-import task.Task;
-import task.TaskFileRepository;
-import task.TaskManager;
+import main.java.com.fatyk.taskmanager.exception.*;
+import main.java.com.fatyk.taskmanager.task.Status;
+import main.java.com.fatyk.taskmanager.task.Task;
+import main.java.com.fatyk.taskmanager.task.TaskFileRepository;
+import main.java.com.fatyk.taskmanager.task.TaskManager;
 
 
 public enum State{

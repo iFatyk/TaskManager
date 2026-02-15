@@ -1,9 +1,9 @@
-package task;
+package main.java.com.fatyk.taskmanager.task;
 
 import java.util.ArrayList;
 
-import exception.UnknownIdException;
-import exception.UnknownTitleException;
+import main.java.com.fatyk.taskmanager.exception.UnknownIdException;
+import main.java.com.fatyk.taskmanager.exception.UnknownTitleException;
 
 public class TaskManager{
     private ArrayList<Task> tasks;

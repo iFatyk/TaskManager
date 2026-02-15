@@ -1,6 +1,6 @@
-package task;
+package main.java.com.fatyk.taskmanager.task;
 
-import exception.UnknownStatusException;
+import main.java.com.fatyk.taskmanager.exception.UnknownStatusException;
 
 public enum Status{
     TODO("TODO"),
